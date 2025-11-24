@@ -8,13 +8,13 @@ I made this to practice dictionaries, loops, if-else conditions, and basic logic
 
 # Features
 
-✔ Shows a menu with prices
-✔ User can order multiple items
-✔ Quantity option
-✔ Removes unavailable items
-✔ Option to remove items before paying
-✔ 10% discount if the bill is above ₹500
-✔ Final bill summary with total amount
+* Shows a menu with prices
+* User can order multiple items
+* Quantity option
+* Removes unavailable items
+* Option to remove items before paying
+* 10% discount if the bill is above ₹500
+* Final bill summary with total amount
 
 
 # How It Works
