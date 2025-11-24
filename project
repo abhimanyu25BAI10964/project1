@@ -1,0 +1,81 @@
+#define the menu
+menu = {
+    'pizza':180,
+    'burger':100,
+    'coke':80,
+    'salad':120,
+    'pasta':150,
+    'coffee/tea':50,
+    'frenchfries':120,
+    'chickenbiryani':500,
+}
+
+print("welcome to our restaurant ")
+print("\nhere is our menu:")
+for item, price in menu.items():
+    print(f"{item}: Rs{price}")
+
+order_total = 0
+order_list = {}
+
+while True:
+    item = input("\nWhat do you want to order? (type 'done' if u don't want anything) = ")
+
+    if item == "done":
+        break
+
+    if item in menu:
+        quantity = int(input(f"How many {item} do u want? = "))
+
+        cost = menu[item] * quantity
+        order_total += cost
+
+        # storing for bill summary
+        if item in order_list:
+            order_list[item] += quantity
+        else:
+            order_list[item] = quantity
+
+        print(f"{quantity}x {item} added to u order")
+    else:
+        print(f"Sorry, {item} isnot available")
+
+    another = input("do you want to order anything else? (yes/no) = ")
+    if another.lower() != "yes":
+        break
+
+
+print("Your Order Summary:")
+
+for food, qty in order_list.items():
+    print(f"{food} x{qty} = Rs{menu[food] * qty}")
+
+print(f"\nSubtotal: Rs{order_total}")
+
+
+remove = input("\ndo you want to remove anything? (yes/no) = ")
+if remove.lower() == "yes":
+    remove_item = input("Which item do you want to remove? = ")
+    if remove_item in order_list:
+        order_total -= order_list[remove_item] * menu[remove_item]
+        print(f"{remove_item} removed from order.")
+        del order_list[remove_item]
+    else:
+        print("item not found in your order.")
+
+
+discount = 0
+if order_total >= 500:
+    discount = int(order_total * 0.10)
+    order_total -= discount
+
+print("Final Bill:")
+
+for food, qty in order_list.items():
+    print(f"{food} x{qty} = Rs{menu[food] * qty}")
+
+if discount > 0:
+    print(f"\ndiscount applied: Rs{discount} (10% off)")
+
+print(f"\ntotal amount to pay: Rs{order_total}")
+print("thank you for ordering come again ")
